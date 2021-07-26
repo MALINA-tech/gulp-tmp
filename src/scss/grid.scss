@@ -1,0 +1,52 @@
+@import "grid/default";
+@import "grid/functions";
+@import "grid/container";
+@import "grid/row";
+@import "grid/col";
+@import "grid/translate";
+
+* {
+  box-sizing: border-box; // recommend
+}
+
+.cols {
+  @include grid-row();
+
+  &__item {
+    @include grid-col(12 6 4 (1 of 5));
+    
+    @include grid-breakpoint(md) {
+      letter-spacing: 0.5em;
+    }
+  }
+}
+
+.component {
+  $component-grid: (
+    columns: 15
+  );
+  
+  &__item {
+    @include grid-col(5 3, $component-grid);
+  }
+
+  $grid: (
+    container: (
+      xs: 15px,
+      md: 5%
+    )
+  );
+}
+
+.row {
+  @include grid-row();
+}
+
+.col {
+  @include grid-col(12 6 4 3);
+}
+
+.container {
+  @include grid-container(sm);
+}
+
